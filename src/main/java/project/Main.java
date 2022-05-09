@@ -13,6 +13,10 @@ public class Main {
     	// TASK 1
     	System.out.println("TASK 1");
     	getAllSupliers();
+	    
+	// TASK 3
+    	System.out.println("TASK 3");
+	getAllShippers();
     	
     	// TASK 4
     	System.out.println("TASK 4");
@@ -33,8 +37,14 @@ public class Main {
 
     }
     
-    private void getAllShipers() {
-
+    private static void getAllShippers() {
+    	RedisConnection redis = new RedisConnection();
+    	Map<String, String> shippers = redis.makeQueryString("SHIPPERS:*");
+    	
+    	for (Map.Entry<String,String> entry : shippers.entrySet()) {
+            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    	}
+    
     }
     
     private static void getCustomersWithOrderPreparedByMargaret() {
