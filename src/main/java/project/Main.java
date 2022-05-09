@@ -28,7 +28,8 @@ public class Main {
     	MongoDBConnection mongoquery = new MongoDBConnection();
     	List<Map<String, Object>> allsuppliers = mongoquery.makeQuery("Suppliers");
 		for (Map<String, Object> supplier : allsuppliers) {
-            System.out.println(supplier);
+            		Suppliers sup = new Suppliers(supplier);
+            		System.out.println(sup);
 		}
     	
     }
