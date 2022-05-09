@@ -46,6 +46,7 @@ public class RedisConnection {
 		Map<String, String> result = new HashMap<>();
 		for (String key : keys) {
 			result.put(key, jedis.get(key));
+			result.get(result.size()-1).put("ID", key.split(":")[1]);
 		}
 		
 		pool.close();
