@@ -14,9 +14,13 @@ public class Main {
     	System.out.println("TASK 1");
     	getAllSupliers();
     	
+    	// TASK 3
+    	System.out.println("TASK 3");
+    	getAllShippers();
+    	
     	// TASK 4
     	System.out.println("TASK 4");
-    	getCustomersWithOrderPreparedByMargaret();
+    	//getCustomersWithOrderPreparedByMargaret();
     }
     	
     	
@@ -33,7 +37,14 @@ public class Main {
 
     }
     
-    private void getAllShipers() {
+    private static void getAllShippers() {
+    	RedisConnection redis = new RedisConnection();
+    	Map<String, String> shippers = redis.makeQueryString("SHIPPERS:*");
+    	
+    	for (Map.Entry<String,String> entry : shippers.entrySet()) {
+            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    	}
+    	
 
     }
     
@@ -50,7 +61,7 @@ public class Main {
     			String id_Margaret = employee.get("EmployeeID").toString();
     			
     			// Get all orders (REDIS)
-	            List<Map<String, String>> orders = redis.makeQuery("ORDER:*");
+	            List<Map<String, String>> orders = redis.makeQueryHash("ORDER:*");
 	            
 	            // Filter all orders prepared by a employees with FirstName Margaret
 	            List<String> orders_margaret = new ArrayList<>();

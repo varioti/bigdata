@@ -24,7 +24,7 @@ public class RedisConnection {
 	static final String DB_URL = "localhost";
 	static final int PORT = 6666;
 	
-	public List<Map<String, String>> makeQuery(String key_pattern)  {
+	public List<Map<String, String>> makeQueryHash(String key_pattern)  {
 		JedisPool pool = new JedisPool(DB_URL, PORT);
 		Jedis jedis = pool.getResource();
 		Set<String> keys = jedis.keys(key_pattern);
@@ -32,6 +32,20 @@ public class RedisConnection {
 		List<Map<String, String>> result = new ArrayList<>();
 		for (String key : keys) {
 			result.add(jedis.hgetAll(key));
+		}
+		
+		pool.close();
+		return result;
+	}
+	
+	public Map<String, String> makeQueryString(String key_pattern)  {
+		JedisPool pool = new JedisPool(DB_URL, PORT);
+		Jedis jedis = pool.getResource();
+		Set<String> keys = jedis.keys(key_pattern);
+		
+		Map<String, String> result = new HashMap<>();
+		for (String key : keys) {
+			result.put(key, jedis.get(key));
 		}
 		
 		pool.close();
