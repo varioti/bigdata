@@ -20,7 +20,7 @@ public class Main {
     	
     	// TASK 4
     	System.out.println("TASK 4");
-    	//getCustomersWithOrderPreparedByMargaret();
+    	getCustomersWithOrderPreparedByMargaret();
     }
     	
     	
@@ -28,13 +28,21 @@ public class Main {
     	MongoDBConnection mongoquery = new MongoDBConnection();
     	List<Map<String, Object>> allsuppliers = mongoquery.makeQuery("Suppliers");
 		for (Map<String, Object> supplier : allsuppliers) {
-            System.out.println(supplier);
+			Suppliers sup = new Suppliers(supplier);
+            System.out.println(sup);
 		}
     	
     }
     
     private void getSupliersWithProductEscargot() {
+    	MongoDBConnection mongoquery = new MongoDBConnection();
+    	SQLConnection sql = new SQLConnection("SELECT ProductID FROM Product WHERE ProductName = 'Escargots de Bourgogne'");
 
+    	List<Map<String, Object>> allsuppliers = mongoquery.makeQuery("Suppliers");
+    	for (Map<String, Object> supplier : allsuppliers) {
+    		
+            System.out.println(supplier);
+		}
     }
     
     private static void getAllShippers() {
@@ -44,8 +52,7 @@ public class Main {
     	for (Map.Entry<String,String> entry : shippers.entrySet()) {
             System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
     	}
-    	
-
+    
     }
     
     private static void getCustomersWithOrderPreparedByMargaret() {
