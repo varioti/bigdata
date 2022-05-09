@@ -32,6 +32,7 @@ public class RedisConnection {
 		List<Map<String, String>> result = new ArrayList<>();
 		for (String key : keys) {
 			result.add(jedis.hgetAll(key));
+			result.get(result.size()-1).put("ID", key.split(":")[1]);
 		}
 		
 		pool.close();

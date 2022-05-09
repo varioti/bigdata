@@ -13,6 +13,10 @@ public class Main {
     	// TASK 1
     	System.out.println("TASK 1");
     	getAllSupliers();
+	    
+	// TASK 3
+    	System.out.println("TASK 3");
+	getAllShippers();
     	
     	// TASK 3
     	System.out.println("TASK 3");
@@ -75,6 +79,7 @@ public class Main {
 	            for (Map<String, String> order : orders) {
 	            	if (order.get("EmployeeRef").toString().equals(id_Margaret)) {
 	            		orders_margaret.add(order.get("CustomerRef"));
+	            		System.out.println(order);
 	            	}
 	            }
 	            // Get all customers (MONGODB)
@@ -83,7 +88,7 @@ public class Main {
 	            // Print only customers in referenced in orders_margaret
 	            for (Map<String, Object> customer : customers) {
 	            	if (orders_margaret.contains(customer.get("CustomerID"))) {
-	            		System.out.println(customer);
+	            		//System.out.println(customer);
 	            	}
 	            }
     		}
