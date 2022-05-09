@@ -84,4 +84,8 @@ public class Products {
 	}
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bd7ce9d146ce4dcb1e52978997dc7c5d87bb3941
