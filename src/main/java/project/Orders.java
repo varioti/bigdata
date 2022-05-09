@@ -48,4 +48,48 @@ public class Orders {
 						"shipPostalCode="+shipPostalCode +", "+
 						"shipCountry="+shipCountry +"}"; 
 		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public LocalDate getOrderDate() {
+			return orderDate;
+		}
+
+		public LocalDate getRequiredDate() {
+			return requiredDate;
+		}
+
+		public LocalDate getShippedDate() {
+			return shippedDate;
+		}
+
+		public Double getFreight() {
+			return freight;
+		}
+
+		public String getShipName() {
+			return shipName;
+		}
+
+		public String getShipAddress() {
+			return shipAddress;
+		}
+
+		public String getShipCity() {
+			return shipCity;
+		}
+
+		public String getShipRegion() {
+			return shipRegion;
+		}
+
+		public String getShipPostalCode() {
+			return shipPostalCode;
+		}
+
+		public String getShipCountry() {
+			return shipCountry;
+		}
 }
